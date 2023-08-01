@@ -1,0 +1,33 @@
+<%- include("partials/headers.ejs") %>
+
+<div>
+  <h1 class="genre"><%= locals.genre %></h1>
+
+  <form class="form" action="/submit" method="POST">
+    <input class="add-field" type="text" name=<%=locals.genre %>
+    id="todo" placeholder="Enter todo"/>
+    <input class="submit-button" type="submit" name="submit" value="Submit" />
+  </form>
+
+  <div class="container">
+    <ul class="todo-ul">
+      <% if (locals.todolist){ %> <% todolist.forEach(todo => { %>
+      <li class="todo-li" onclick="strike()"><%= todo %></li>
+      <% }); %> <% } %>
+    </ul>
+  </div>
+</div>
+
+<script>
+  //Issue - require double click to strikethrough and off
+  function strike() {
+    let groupLi = document.querySelectorAll(".todo-li");
+    for (let i = 0; i < groupLi.length; i++) {
+      groupLi[i].addEventListener("click", () => {
+        groupLi[i].classList.toggle("strike");
+      });
+    }
+  }
+</script>
+
+<%- include("partials/footer.ejs") %>
