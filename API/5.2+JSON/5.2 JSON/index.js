@@ -47,7 +47,6 @@ app.post("/recipe", (req, res) => {
     salsaName = beefChoice["salsa"]["name"];
     const i = Object.values(beefChoice["toppings"]);
 
-
     for (let i=0;i<beefChoice["toppings"].length; i++){
       ingredients.push(beefChoice["toppings"][i].name);
       quantity.push(beefChoice["toppings"][i].quantity);
